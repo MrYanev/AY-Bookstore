@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+		<div class="row pad">
+		<div class="col-lg-12">
+			<h2 class="bold text-center">Add New Book</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<div class="panel panel-default">
+				<form method="POST" action="{{ url_for('add') }}" enctype="multipart/form-data">
+					<div class="panel-body">
+						<div class="row">
+							{{ form.csrf_token }}
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label>ISBN</label>
+									{{ form.isbn(class='form-control') }}
+								</div>
+								
+								<div class="form-group">
+									<label>Book Title</label>
+									{{ form.name(class='form-control') }}
+								</div>
+								
+								<div class="form-group">
+									<label>Author</label>
+									{{ form.author(class='form-control') }}
+								</div>
+								
+								<div class="form-group">
+									<label>Publication Date</label>
+									{{ form.public_date(class='form-control') }}
+								</div>
+							</div>
+							
+							<div class="col-lg-6">
+								<div class="form-group">
+									<div class="form-group">
+										<label>Description</label>
+										{{ form.description(class='form-control') }}
+									</div>
+									<label>Cover Photo</label>
+									{{ form.cover_photo(class='form-control') }}
+								</div>
+								
+								<div class="form-group">
+									<label>Trade Price</label>
+									{{ form.trade_price(class='form-control') }}
+								</div>
+								
+								<div class="form-group">
+									<label>Retail Price</label>
+									{{ form.retail_price(class='form-control') }}
+								</div>
+								
+								<div class="form-group">
+									<label>Quantity</label>
+									{{ form.quantity(class='form-control') }}
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel-footer">
+						<button type="submit" class="btn btn-primary">
+							<i class="glyphicon glyphicon-plus-sign"></i> Save Product
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+<!-- Add book template a simple form to take the information needed for adding a new book to the database -->

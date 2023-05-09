@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h1>AY Bookstore. Welcome to home of words</h1>
+			<!--Here I add an If to check if the user has logged in or not. If not a loogin hyperlink is available-->
+			{% if login %}
+			<h3>Let's dive in!</h3>
+			{% else %}
+			<p>Already an user? <a href="{{ url_for('login') }}">Login</a></p>
+			{% endif %}    
+		</div>
+	</div>
+	<div class="container body-content">
+		<div class="container">
+			{% for book in books %} <!-- A loop to go over all the books in the database and display the required information -->
+			<div class="row justify-content-start" style="padding-top:10px;">
+                <div class="col" style="padding-top:10px;">
+					<img alt="Image html" width="90%" height="90%" style="max-height:500px;max-width:500px;" src="{{ book.cover_photo }}" />
+				</div>
+                <div class="col" style="padding-top:10px;">
+					<label>{{ book.name }}</label>
+				</div>
+                <div class="col" style="padding-top:10px;">
+                    <p class="text-black-50">
+                        {{ book.author }}
+                    </p>
+                </div>
+                <div class="col" style="padding-top:10px;">
+                    <label>$ {{ book.retail_price }}</label>
+                </div>
+				{% if book.quantity > 0 %}
+                <a href="{{ url_for('add_to_cart', isbn = book.isbn) }}" class="btn btn-default btn-sm">
+					<i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+				</a>
+				{% endif %}
+            </div>
+			{% endfor %}
+        </div>
+	</div>
+<div  class="spacer"> <br><br> </div> <!-- An empty div for extra space as the footer was covering body content -->
+{% endblock %}

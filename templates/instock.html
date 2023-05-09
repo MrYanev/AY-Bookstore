@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="col-lg-6 pad">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Available Books</h3>
+			</div>
+			<div class="panel-body">
+				Books available in stock
+			</div>
+			{% for book in books %} <!-- Same as the main page here i've used a loop to display all the books from the database -->
+			<div class="row justify-content-start" style="padding-top:10px;">
+                <div class="col" style="padding-top:10px;">
+					<img alt="Image html" width="90%" height="90%" style="max-height:500px;max-width:500px;" src="{{ book.cover_photo }}" />
+				</div>
+                <div class="col" style="padding-top:10px;">
+					<label>{{ book.name }}</label>
+				</div>
+                <div class="col" style="padding-top:10px;">
+                    <p class="text-black-50">
+                        {{ book.isbn }}
+                    </p>
+                </div>
+                <div class="col" style="padding-top:10px;">
+                    <label>{{ book.quantity }}</label>
+                </div>
+            </div>
+			{% endfor %}
+		</div>
+	</div>
+<div  class="spacer"> <br><br> </div> <!-- An empty div for extra space as the footer was covering body content -->
+{% endblock %}

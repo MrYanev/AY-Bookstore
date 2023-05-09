@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> AY - Bookstore </title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="static/css/main.css"/>
+	</head>
+	<body>
+		<div class = "container">
+			{% include "includes/nav.html" %}
+
+            {% block content %}
+            <!-- Loads the index.html in this block... This way troughout blocks we can render/call different pages/elements and keep the template simple-->
+            {% endblock %}
+		</div>
+			{% include "includes/footer.html" %}
+	</body>
+</html>
+<!-- This is the layout template which is the same for all the other templates so to make it easier i'm using this one as an extension for all others  -->
